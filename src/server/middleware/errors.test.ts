@@ -1,5 +1,4 @@
 import type { Response } from "express";
-import { json } from "express";
 import notFoundError from "./errors";
 
 describe("Given a notFoundPage middleware", () => {
