@@ -72,10 +72,16 @@ describe("Given the userLogin function", () => {
           password: "1234",
         },
       };
+      const expectedToken = {
+        accesstoken:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmMxZjg3ZmViNzA1NjQxY2MxN2Q0ZiIsInVzZXJuYW1lIjoiTm9zZSIsImlhdCI6MTY2ODAzMDgyMn0.xA9e1T4mymj2w-IdlJXTuKXnGLzoFVW3wsAPvSpJjPM",
+      };
 
       User.findOne = jest.fn().mockReturnValue(mockUser);
 
       await loginUser(req as Request, res as Response, null);
+
+      expect(res.json).toHaveBeenCalledWith(expectedToken);
     });
   });
 });
